@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'ui.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({Key? key}) : super(key: key);
@@ -11,10 +12,12 @@ class SettingsPage extends StatefulWidget {
 class _SettingsPageState extends State<SettingsPage> {
   bool isSwitched = false;
   bool darkmode = Get.isDarkMode;
+  UI ui = UI();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: ui.sidebar(context),
         appBar: AppBar(
             title: Row(
           children: const [Icon(Icons.settings), Text('   Settings')],
