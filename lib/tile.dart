@@ -8,9 +8,6 @@ class Tile {
 
   //turns the tile into a map
   Map<String, dynamic> tileToMap() {
-    print(id);
-    print(name);
-    print(content);
     return {
       'id': id,
       'name': name,

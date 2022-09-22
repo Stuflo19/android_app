@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'settings.dart';
-import 'homepage.dart';
+import 'todo.dart';
 
 class UI {
   Widget sidebar(context) {
@@ -11,10 +11,10 @@ class UI {
       ),
       Card(
           child: ListTile(
-        title: Text("Homepage"),
+        title: Text("To-Do Page"),
         onTap: () {
           Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => const HomePage()));
+              .push(MaterialPageRoute(builder: (context) => const TodoPage()));
         },
       )),
       Card(
