@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'ui.dart';
+import 'database.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +14,18 @@ class _HomePageState extends State<HomePage> {
   bool isSwitched = false;
   bool darkmode = Get.isDarkMode;
   UI ui = UI();
+  DBManager db = DBManager();
+  List tiles = [];
+
+  void setup() async {
+    tiles = await db.readTiles();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setup();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +43,14 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.all(15),
                       child: Text("Available topics",
                           style: TextStyle(fontSize: 24)))),
-              Card(
-                  margin: const EdgeInsets.all(15),
-                  child: ListTile(
-                    title: Text("Topic 1"),
-                    subtitle: Text("Information about topic"),
-                    onTap: () {},
-                  )),
+              for (var tile in tiles)
+                Card(
+                    margin: const EdgeInsets.all(15),
+                    child: ListTile(
+                      title: Text(tile.name),
+                      subtitle: Text(tile.content),
+                      onTap: () {},
+                    )),
             ]));
   }
 }
