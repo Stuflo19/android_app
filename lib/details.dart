@@ -38,18 +38,6 @@ class _DetailsPageState extends State<DetailsPage> {
     return tile;
   }
 
-  void boxClicked(bool selected, checked) {
-    if (selected == true) {
-      setState(() {
-        checked = 1;
-      });
-    } else {
-      setState(() {
-        checked = 0;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
