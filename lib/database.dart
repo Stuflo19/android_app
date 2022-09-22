@@ -47,6 +47,21 @@ class DBManager {
   }
 
   // Function to read in all tiles from the database
+  Future<Tile> readTile(int id) async {
+    final Database db = await database;
+
+    // Gets all the tiles from the tile table
+    final List<Map<String, dynamic>> tiles =
+        await db.query('tile', where: 'id=${id + 1}');
+
+    return Tile(
+      id: tiles[0]['id'],
+      name: tiles[0]['name'],
+      content: tiles[0]['content'],
+    );
+  }
+
+  // Function to read in all tiles from the database
   Future<List<Tile>> readTiles() async {
     final Database db = await database;
 

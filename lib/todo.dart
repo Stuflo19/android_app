@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'ui.dart';
 import 'database.dart';
+import 'details.dart';
 
 class TodoPage extends StatefulWidget {
   const TodoPage({Key? key}) : super(key: key);
@@ -45,7 +46,8 @@ class _TodoPageState extends State<TodoPage> {
                     title: Text(tiles[index].name),
                     subtitle: Text(tiles[index].content),
                     onTap: () {
-                      //open full view of the item
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => DetailsPage(index: index)));
                     },
                   );
                 });
